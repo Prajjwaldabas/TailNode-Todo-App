@@ -1,38 +1,204 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Nanum+Gothic:wght@400;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+.App{
+    width: 100%;
+display: flex;
+height: 100vh;
+font-family: 'Poppins', sans-serif;
+justify-content: center;
+background-color: #EFEBE8;
+}
+input:focus{
+    outline: none;
+}
+.todoContainer{
+    position: relative;
+  margin: 5% auto;
+   overflow: hidden;
+    background-color: white;
+    width: 350px;
+    height: 550px;
+  
+    padding: 2%;
+
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12)
+  ;
+    
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.inputContainer{
+ width: 100%;
+ justify-content: space-between;
+ align-items: center;
+ margin-top:10%;
+ display: flex;
+
+   
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.todoInput{
+    width: 75%;
+    
+    padding: 5%;
+    
+    box-shadow:inset 0 0 5px 1px #efefef;
+    background: #fff;
+    border: none;
+   color: rgb(175, 174, 174);
+   font-size: 15px;
+    border-radius: 30px;
+
+}
+.todoInput:focus{
+    
+    outline: none;
+}
+
+.addTodo{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+cursor: pointer;
+    background-color:#a0c3eb;
+    color: white;
+    font-size: 30px;
+    border: none;
+}
+
+.itemContainer{
+    align-items: center;
+
+    display: flex;
+
+    margin-top: 20px;
+    padding: 2%;
+    width: 100%;
+}
+
+li{
+    transition: transform 0.3s ease-in-out;
+
+cursor: pointer;
+    list-style: none;
+    font-size: 18px;
+    color: rgb(175, 174, 174);
+    margin: 0 20px;
+    font-weight: 400;
+}
+
+
+.checkbox {
+    appearance: none; 
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background-color: none; 
+    border: 2px solid rgb(143, 143, 143); 
+    cursor: pointer;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .checkbox:checked {
+    border: none;
+    background-color: #a0c3eb;
   }
-  to {
-    transform: rotate(360deg);
+.completed {
+    text-decoration: line-through;
   }
-}
+  
+
+  .todo-date{
+    height: 180px;
+    width: 120%;
+    background-color: #a0c3eb;
+    color: white;
+    top: -90px;
+    left: -10%;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 400px;
+    border-radius: 50%;
+display: flex;
+
+
+    position: absolute;
+  }
+
+
+  .date{
+    height: 20px;
+   
+    margin-left: 50px;
+    position: relative;
+    margin-top: 80px;
+   
+  }
+
+  .reset_Btn{
+    position: relative;
+    top: 8%;
+    padding: 5px;
+    background-color: #499cfb;
+    left: 1%;
+    color: white;
+    border-radius:15px;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 60px;
+
+  }
+
+  .searchContainer{
+    margin-top: 25%;
+    height: 20px;
+    display: flex;
+  
+    align-items: center;
+    /* justify-content: center; */
+    /* background-color: honeydew; */
+  }
+
+  .searchInput {
+    width: 0; 
+    opacity: 0;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+  }
+  
+
+  .searchInput.visible {
+    width: 200px;
+    padding: 2px; 
+    opacity: 1; 
+    border: none;
+    /* border-bottom: 2px solid grey; */
+  }
+
+  .search-input{
+    display: flex;
+    color:#97aec8;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #a0c3eb;
+  }
+
+  .searchButton{
+ cursor: pointer;
+    color: #a0c3eb;
+  }
+
+  .emptyTodo{
+    margin-top: 20%;
+    margin-left: 15%;
+    color: grey;
+  }
