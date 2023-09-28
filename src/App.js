@@ -8,6 +8,8 @@ import TodoItem from './components/TodoItem';
 import Search from './components/Search';
 
 function App() {
+
+  // State variables
   const [todos, setTodos] = useState([]);
   const [value, setValue] = useState('');
   const[empty,setEmpty] = useState(false)
@@ -18,6 +20,7 @@ function App() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 
  
+  // Fetch stored todos from local storage on component mount
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem('todos'));
     if (storedTodos) {
@@ -26,6 +29,7 @@ function App() {
   }, []);
 
  
+  // Update local storage whenever todos change
   useEffect(() => {
     try {
       localStorage.setItem('todos', JSON.stringify(todos));
@@ -35,6 +39,8 @@ function App() {
   }, [todos]);
 
 
+
+    // Function to add a new todo
   function addTodo() {
     if (value.trim() !== '') {
       const newTodo = {
@@ -49,18 +55,23 @@ function App() {
     } else {
       setEmpty(true); 
   
-     
+     // Clear the empty message after 3 seconds
       setTimeout(() => {
         setEmpty(false);
       }, 3000);
     }
   }
 
+
+  // Function to delete a todo
   function deleteTodo(id) {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   }
 
+
+  
+  // Function to toggle the completion status of a todo
   function toggleComplete(id) {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
@@ -72,18 +83,23 @@ function App() {
     setTodos(updatedTodos);
   }
 
+
+  // Function to handle resetting todos
   function handleReset() {
 
     setTodos([]);
   }
 
 
+  
+  // Sort todos by createdAt for active todos, and by completed and createdAt for completed todos.
   const sortedTodos = [...todos].sort((a, b) => {
     if (a.completed && !b.completed) return 1;
     if (!a.completed && b.completed) return -1;
     return b.createdAt - a.createdAt;
   });
 
+   // Filter todos based on search query
   const filteredTodos = sortedTodos.filter((todo) =>
   todo.task.toLowerCase().includes(searchQuery.toLowerCase())
 );
@@ -94,6 +110,7 @@ function App() {
     <div className="App">
       <div className="todoContainer">
       <Header formattedDate={formattedDate} handleReset={handleReset} />
+        
         <Search
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
